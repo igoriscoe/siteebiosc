@@ -295,7 +295,16 @@ function setupFormValidation() {
     
     if (form) {
         form.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Only prevent default if not on the last step
+            if (currentStep < totalSteps) {
+                e.preventDefault();
+                return false;
+            }
+            // Allow natural submission on last step
+            if (!validateCurrentStep()) {
+                e.preventDefault();
+                return false;
+            }
             submitForm();
         });
 
@@ -322,40 +331,22 @@ function submitForm() {
         loadingAnimation.style.display = 'block';
     }
 
-    // Submit form data to Formspree
-    const formData = new FormData(registrationForm);
+    // Allow natural form submission to Formspree
+    // Remove preventDefault to let the form submit normally
+    if (loadingAnimation) {
+        loadingAnimation.style.display = 'none';
+    }
     
-    fetch(registrationForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        if (loadingAnimation) {
-            loadingAnimation.style.display = 'none';
-        }
-        
-        if (response.ok) {
-            const successAnimation = document.getElementById('successAnimation');
-            if (successAnimation) {
-                successAnimation.classList.add('show');
-            }
-            console.log('Form submitted successfully to Formspree');
-        } else {
-            alert('Oops! Houve um problema ao enviar sua inscrição. Tente novamente.');
-            registrationForm.style.display = 'block';
-        }
-    })
-    .catch(error => {
-        if (loadingAnimation) {
-            loadingAnimation.style.display = 'none';
-        }
-        console.error('Error:', error);
-        alert('Erro ao enviar formulário. Verifique sua conexão e tente novamente.');
-        registrationForm.style.display = 'block';
-    });
+    // Show success animation first
+    const successAnimation = document.getElementById('successAnimation');
+    if (successAnimation) {
+        successAnimation.classList.add('show');
+    }
+    
+    // Submit the form naturally after showing success
+    setTimeout(() => {
+        registrationForm.submit();
+    }, 1000);
 }
 
 function resetForm() {
@@ -488,44 +479,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const email = this.querySelector('input[type="email"]').value;
             const checkbox = this.querySelector('input[type="checkbox"]').checked;
             
             if (!email) {
+                e.preventDefault();
                 alert('Por favor, insira seu e-mail.');
-                return;
+                return false;
             }
             
             if (!checkbox) {
+                e.preventDefault();
                 alert('Por favor, aceite receber comunicações.');
-                return;
+                return false;
             }
             
-            // Send to Formspree
-            const formData = new FormData(this);
-            
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Obrigado! Você foi inscrito na nossa newsletter.');
-                    this.querySelector('input[type="email"]').value = '';
-                    this.querySelector('input[type="checkbox"]').checked = false;
-                } else {
-                    alert('Oops! Houve um problema. Tente novamente.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Erro ao inscrever na newsletter. Tente novamente.');
-            });
+            // Let the form submit naturally to Formspree
+            alert('Enviando inscrição da newsletter...');
+            return true;
         });
     }
 });
