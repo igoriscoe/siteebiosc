@@ -322,25 +322,40 @@ function submitForm() {
         loadingAnimation.style.display = 'block';
     }
 
-    // Simulate form submission
-    setTimeout(() => {
+    // Submit form data to Formspree
+    const formData = new FormData(registrationForm);
+    
+    fetch(registrationForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
         if (loadingAnimation) {
             loadingAnimation.style.display = 'none';
         }
         
-        const successAnimation = document.getElementById('successAnimation');
-        if (successAnimation) {
-            successAnimation.classList.add('show');
+        if (response.ok) {
+            const successAnimation = document.getElementById('successAnimation');
+            if (successAnimation) {
+                successAnimation.classList.add('show');
+            }
+            console.log('Form submitted successfully to Formspree');
+        } else {
+            alert('Oops! Houve um problema ao enviar sua inscrição. Tente novamente.');
+            registrationForm.style.display = 'block';
         }
-        
-        // Send form data (in a real application)
-        console.log('Form submitted successfully');
-        
-        // Here you would typically send the data to your server
-        // const formData = new FormData(document.getElementById('registrationForm'));
-        // sendToServer(formData);
-        
-    }, 3000);
+    })
+    .catch(error => {
+        if (loadingAnimation) {
+            loadingAnimation.style.display = 'none';
+        }
+        console.error('Error:', error);
+        alert('Erro ao enviar formulário. Verifique sua conexão e tente novamente.');
+        registrationForm.style.display = 'block';
+    });
 }
 
 function resetForm() {
@@ -488,13 +503,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate newsletter subscription
-            alert('Obrigado! Você foi inscrito na nossa newsletter.');
-            this.querySelector('input[type="email"]').value = '';
-            this.querySelector('input[type="checkbox"]').checked = false;
+            // Send to Formspree
+            const formData = new FormData(this);
             
-            // Here you would typically send the data to your server
-            console.log('Newsletter subscription:', { email, consent: checkbox });
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Obrigado! Você foi inscrito na nossa newsletter.');
+                    this.querySelector('input[type="email"]').value = '';
+                    this.querySelector('input[type="checkbox"]').checked = false;
+                } else {
+                    alert('Oops! Houve um problema. Tente novamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Erro ao inscrever na newsletter. Tente novamente.');
+            });
         });
     }
 });

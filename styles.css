@@ -26,6 +26,8 @@ body {
     color: var(--text-dark);
     background: var(--background);
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 /* Main Navigation */
@@ -107,12 +109,24 @@ body {
 
 /* Header */
 header {
-    background: var(--gradient);
+    background: linear-gradient(135deg, #1a3d16 0%, #2d5a27 50%, #3d6b38 100%);
     color: var(--white);
-    padding: 2rem 0;
+    padding: 2.5rem 0;
+    padding-top: calc(2.5rem + 80px);
     position: relative;
     overflow: hidden;
-    margin-top: 80px;
+    margin-top: 0;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
 
 .header-bg {
@@ -136,7 +150,7 @@ header {
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .header-content {
@@ -156,15 +170,12 @@ header {
 }
 
 .logo {
-    width: 120px;
-    height: 120px;
-    background: var(--white);
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
+    width: 150px;
+    height: 250px;
+    margin: 0 auto 0.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow);
     animation: pulse 2s infinite;
 }
 
@@ -225,6 +236,7 @@ main {
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.6s ease-out;
+    scroll-margin-top: 120px;
 }
 
 .section.visible {
@@ -273,6 +285,7 @@ main {
 .event-text {
     font-size: 1.1rem;
     line-height: 1.8;
+    text-align: justify;
 }
 
 .event-text p {
@@ -1347,4 +1360,166 @@ textarea {
     font-weight: 500;
     color: var(--text-dark);
     font-size: 1rem;
+}
+
+/* Sponsors and Partners Section */
+.sponsors-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.organizers {
+    margin-bottom: 3rem;
+}
+
+.organizers h3 {
+    text-align: center;
+    color: var(--primary-green);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.organizer-main {
+    display: flex;
+    justify-content: center;
+}
+
+.organizer-item {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    max-width: 700px;
+    gap: 2rem;
+}
+
+.organizer-logo {
+    flex-shrink: 0;
+}
+
+.organizer-logo img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.organizer-info h4 {
+    color: var(--primary-green);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.organizer-info p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.organizer-description {
+    margin-top: 1rem !important;
+    line-height: 1.6;
+    color: var(--text-dark) !important;
+}
+
+.supporters {
+    margin-bottom: 3rem;
+}
+
+.supporters h3 {
+    text-align: center;
+    color: var(--primary-green);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.supporters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.supporter-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.supporter-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-green);
+}
+
+.supporter-logo {
+    margin-bottom: 1rem;
+}
+
+.supporter-item p {
+    color: var(--text-dark);
+    font-weight: 500;
+    margin: 0;
+}
+
+.partnership-info {
+    background: linear-gradient(135deg, var(--accent-green), var(--light-green));
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--white);
+}
+
+.partnership-text h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.partnership-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.partnership-info .btn {
+    background: var(--white);
+    color: var(--primary-green);
+    border: none;
+    font-weight: 600;
+}
+
+.partnership-info .btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design for Sponsors Section */
+@media (max-width: 768px) {
+    .organizer-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .supporters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .partnership-info {
+        padding: 2rem;
+    }
+    
+    .organizers h3,
+    .supporters h3 {
+        font-size: 1.5rem;
+    }
 }
