@@ -3,7 +3,7 @@
 
 // Form Management Variables
 let currentStep = 1;
-const totalSteps = 7;
+const totalSteps = 6;
 let formSteps, progressFill, currentStepSpan, prevBtn, nextBtn, submitBtn;
 
 // Navigation Management Variables
