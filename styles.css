@@ -1370,14 +1370,14 @@ textarea {
 }
 
 .organizers {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .organizers h3 {
     text-align: center;
     color: var(--primary-green);
     font-size: 1.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: 600;
 }
 
@@ -1390,7 +1390,7 @@ textarea {
     display: flex;
     align-items: center;
     background: transparent;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 15px;
     max-width: 700px;
     gap: 2rem;
@@ -1425,14 +1425,14 @@ textarea {
 }
 
 .supporters {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .supporters h3 {
     text-align: center;
     color: var(--primary-green);
     font-size: 1.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: 600;
 }
 
