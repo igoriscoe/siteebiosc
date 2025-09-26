@@ -602,7 +602,7 @@
                                     <input type="text" id="fullName" name="fullName" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="fullName">Nome para Certificado<span class="required">*</span></label>
+                                    <label for="NomeCertificado">Nome para Certificado <span class="required">*</span></label>
                                     <input type="text" id="NomeCertificado" name="NomeCertificado" required>
                                 </div>
                                 <div class="form-group">
@@ -624,8 +624,8 @@
                                     <label for="education">Nível de Formação <span class="required">*</span></label>
                                     <select id="education" name="education" required>
                                         <option value="">Selecione uma opção</option>
-                                        <option value="graduacao">Estudante de Graduação</option>
-                                        <option value="graduacao">Graduado</option>
+                                        <option value="estudante-graduacao">Estudante de Graduação</option>
+                                        <option value="graduado">Graduado</option>
                                         <option value="especializacao">Especialização/MBA</option>
                                         <option value="mestrado">Mestrado</option>
                                         <option value="doutorado">Doutorado</option>
@@ -641,8 +641,8 @@
                                     <input type="text" id="area" name="area" placeholder="Ex: Meio Ambiente e Biodiversidade, Saúde, Biotecnologia e Produção Industrial, Educaçao">
                                 </div>
                                 <div class="form-group">
-                                    <label for="curso graduacao">Curso de Graduação</label>
-                                    <input type="text" id="graduacao" name="area" placeholder="Ex: Qual é a sua graduação ou em qual curso você está se graduando...">
+                                    <label for="cursoGraduacao">Curso de Graduação</label>
+                                    <input type="text" id="cursoGraduacao" name="cursoGraduacao" placeholder="Ex: Ciências Biológicas, Biomedicina, Engenharia Ambiental...">
                                 </div>
                             </div>
                         </div>
@@ -736,9 +736,38 @@
                                     </label>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Step 5: Participation Type -->
+                        <div class="form-step" data-step="5">
+                            <div class="question">
+                                <h3><i class="fas fa-star"></i> Como você gostaria de participar?</h3>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="participation" value="ouvinte">
+                                        <span>Apenas como ouvinte</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="participation" value="apresentacao-oral">
+                                        <span>Apresentação oral</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="participation" value="poster">
+                                        <span>Apresentação de pôster</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="participation" value="workshop">
+                                        <span>Participação em workshops</span>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="participation" value="networking">
+                                        <span>Sessões de networking</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>                        
 
-                        <!-- Step 5: Additional Information -->
+                        <!-- Step 6: Additional Information -->
                         <div class="form-step" data-step="6">
                             <div class="question">
                                 <h3><i class="fas fa-lightbulb"></i> Informações adicionais</h3>
@@ -748,12 +777,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="dietary">Possui alguma restrição alimentar ou necessidade especial?</label>
-                                    <textarea id="dietary" name="dietary" placeholder="Descreva brevemente para que possamos  preparar uma melhor experiência para você ..."></textarea>
+                                    <textarea id="dietary" name="dietary" placeholder="Descreva brevemente para que possamos preparar uma melhor experiência para você..."></textarea>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 6: Confirmation -->
+                        <!-- Step 7: Confirmation -->
                         <div class="form-step" data-step="7">
                             <div class="question">
                                 <h3><i class="fas fa-check-circle"></i> Confirme seus dados</h3>
