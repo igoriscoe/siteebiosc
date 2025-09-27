@@ -494,12 +494,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
             
-            // Let the form submit naturally to Formspree
-            alert('Enviando inscrição da newsletter...');
+            // Set up automatic redirect as backup
+            setTimeout(function() {
+                if (document.location.hostname === 'formspree.io') {
+                    window.location.href = 'https://igoriscoe.github.io/siteebiosc/#contato';
+                }
+            }, 3000);
+            
             return true;
         });
     }
+    
+    // Handle Formspree redirect for main form
+    const mainForm = document.getElementById('registrationForm');
+    if (mainForm) {
+        mainForm.addEventListener('submit', function(e) {
+            // Set up automatic redirect as backup
+            setTimeout(function() {
+                if (document.location.hostname === 'formspree.io') {
+                    window.location.href = 'https://igoriscoe.github.io/siteebiosc/#inscricoes';
+                }
+            }, 3000);
+        });
+    }
 });
+
+// Auto-redirect from Formspree thank you page
+if (window.location.hostname === 'formspree.io' && window.location.pathname.includes('/thanks')) {
+    // Wait 2 seconds then redirect
+    setTimeout(function() {
+        const referrer = document.referrer;
+        if (referrer && referrer.includes('igoriscoe.github.io/siteebiosc')) {
+            // Determine which form was submitted based on referrer
+            if (referrer.includes('#contato')) {
+                window.location.href = 'https://igoriscoe.github.io/siteebiosc/#contato';
+            } else {
+                window.location.href = 'https://igoriscoe.github.io/siteebiosc/#inscricoes';
+            }
+        } else {
+            window.location.href = 'https://igoriscoe.github.io/siteebiosc/';
+        }
+    }, 2000);
+}
 
 // Make functions available globally for onclick handlers
 window.changeStep = changeStep;
