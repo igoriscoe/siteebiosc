@@ -773,12 +773,17 @@ main {
 
 .newsletter-form input[type="email"] {
     flex: 1;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 }
 
 .newsletter-form .form-group:first-child {
     display: flex;
     align-items: center;
+    gap: 1.5rem;
+}
+
+.newsletter-form .btn {
+    margin-top: 0.75rem;
 }
 
 /* Footer */
@@ -1295,11 +1300,12 @@ textarea {
 
     .newsletter-form .form-group:first-child {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .newsletter-form input[type="email"] {
         margin-right: 0;
+        margin-bottom: 1rem;
     }
 
     .benefits-grid {
