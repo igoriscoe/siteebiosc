@@ -618,6 +618,73 @@ main {
     font-weight: 600;
 }
 
+/* Hotel Partner Styles */
+.partner-hotel {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid var(--accent-green);
+    box-shadow: 0 5px 15px rgba(127, 176, 105, 0.2);
+}
+
+.hotel-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hotel-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: white;
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-info h4 {
+    margin-bottom: 0.25rem;
+}
+
+.partner-badge {
+    background: var(--accent-green);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.hotel-photo-bottom {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.hotel-image-bottom {
+    width: 100%;
+    max-width: 280px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.photo-placeholder {
+    width: 100%;
+    max-width: 280px;
+    height: 140px;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+    margin: 0 auto;
+}
+
 /* Papers Section */
 .papers-content {
     display: grid;
