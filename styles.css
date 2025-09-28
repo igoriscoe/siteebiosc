@@ -640,6 +640,8 @@ main {
     background: white;
     padding: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    display: block;
 }
 
 .hotel-info h4 {
@@ -668,6 +670,8 @@ main {
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: block;
+    margin: 0 auto;
 }
 
 .photo-placeholder {
