@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.ebiosc.com.br/sitemap.xml
+
+# Principais páginas do evento
+Allow: /#evento
+Allow: /#objetivos
+Allow: /#programacao
+Allow: /#palestrantes
+Allow: /#local
+Allow: /#inscricoes
+Allow: /#realizacao-patrocinio
+Allow: /#contato
+
+# Desallow arquivos desnecessários
+Disallow: /*.css$
+Disallow: /*.js$
